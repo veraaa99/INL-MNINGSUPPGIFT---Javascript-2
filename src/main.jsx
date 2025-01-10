@@ -38,6 +38,8 @@ import Registration from './pages/Registration'
 import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
 
+import NotFound from './pages/NotFound'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
@@ -54,6 +56,7 @@ createRoot(document.getElementById('root')).render(
 
           <Route path='checkout' element={<Checkout />}/>
 
+          <Route path="*" element={<NotFound/>}/>
         </Route>
 
       </Routes>
