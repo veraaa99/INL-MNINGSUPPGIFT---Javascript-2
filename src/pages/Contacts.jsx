@@ -1,6 +1,10 @@
+import ContactForm from "../components/ContactForm"
+
 function Contacts() {
   return (
-    <div>Contacts</div>
+    <div>
+      <ContactForm />
+    </div>
   )
 }
 export default Contacts
