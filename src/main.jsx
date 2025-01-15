@@ -27,7 +27,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from 'react-router'
 import RootLayout from './layouts/RootLayout'
 
 import Contacts from './pages/Contacts'
@@ -39,10 +39,53 @@ import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
 
 import NotFound from './pages/NotFound'
+import Providers from './contexts/Providers'
+import MessageContextProvider from './contexts/MessageContext'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: 'products',
+        element: <Products />
+      },
+      {
+        path: 'products/:productId',
+        element: <ProductDetails />
+      },
+      {
+        path: 'contacts',
+        element: <Contacts />
+      },
+      {
+        path: 'login',
+        element: <Login />
+      },
+      {
+        path: 'registration',
+        element: <Registration />
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />
+      },
+      {
+        path: '*',
+        element: <NotFound />
+      }
+    ]
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
 
@@ -60,8 +103,10 @@ createRoot(document.getElementById('root')).render(
         </Route>
 
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <Providers>
+      <RouterProvider router={router}/>
+    </Providers>
 
-    {/* Lägg till 404 sida */}
   </StrictMode>,
 )
