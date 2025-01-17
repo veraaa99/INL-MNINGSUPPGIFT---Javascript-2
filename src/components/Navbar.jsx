@@ -15,7 +15,7 @@ function Navbar() {
             <ul>
               <li>SEARCH</li>
               <li><NavLink to="/Login">Login</NavLink></li>
-              <li>SHOPPING CART</li>
+              <li><NavLink to="/Checkout">SHOPPING CART</NavLink></li>
             </ul>
         </div>
     </div>
