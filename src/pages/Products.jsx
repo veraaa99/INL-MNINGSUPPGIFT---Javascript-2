@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react"
 import { Link } from "react-router"
+import { useProductContext } from "../contexts/ProductContext"
+import { useEffect } from "react"
 
 function Products() {
 
-  const [products, setProducts] = useState([])
+  const { products } = useProductContext()
+  const { setProducts } = useProductContext()
+  const { getProducts } = useProductContext()
 
   useEffect(() => {
-    const getProducts = async () => {
-      const res = await fetch('https://js2-ecommerce-api.vercel.app/api/products')
-      const data = await res.json()
-      setProducts(data)
-    }
     getProducts()
-  }, [])
+    }, [])
 
   return (
     <div>

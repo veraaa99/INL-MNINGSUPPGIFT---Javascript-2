@@ -1,11 +1,38 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const ProductContext = createContext()
 
 function ProductContextProvider({ children }) {
 
+  const [products, setProducts] = useState([])
+  const [product, setProduct] = useState({})
+  const [imgSrc, setImgSrc] = useState('')
+  let [productId, setProductId] = useState('')
+
+  const getProducts = async () => {
+    try {
+      const res = await fetch('https://js2-ecommerce-api.vercel.app/api/products')
+      const data = await res.json()
+      setProducts(data)
+    }
+    catch(err) {console.log('error')}
+  }
+
+  const value = {
+    products,
+    setProducts,
+    getProducts,
+    product,
+    setProduct,
+    // getProduct,
+    imgSrc,
+    setImgSrc,
+    productId,
+    setProductId
+  }
+
     return (
-        <ProductContext.Provider value={''}>
+        <ProductContext.Provider value={value}>
             { children }
         </ProductContext.Provider>
     )

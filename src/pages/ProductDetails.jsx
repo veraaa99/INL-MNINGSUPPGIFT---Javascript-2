@@ -1,21 +1,30 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
+import { ProductContext, useProductContext } from "../contexts/ProductContext"
 
 function ProductDetails() {
 
     const { productId } = useParams()
 
-    const [product, setProduct] = useState({})
-    const [imgSrc, setImgSrc] = useState('')
+    const { product } = useProductContext()
+    const { setProduct } = useProductContext()
+    const { setProductId } = useProductContext()
+    const { getProduct } = useProductContext()
+    const { imgSrc } = useProductContext()
+    const { setImgSrc } = useProductContext()
 
     useEffect(() => {
-        const getProduct = async() => {
-            const res = await fetch('https://js2-ecommerce-api.vercel.app/api/products/' + productId)
-            const data = await res.json()
-            setProduct(data)
-            setImgSrc(data.images)
-        }
-        getProduct()
+      setProductId(productId)
+      const getProduct = async() => {
+        try {
+          const res = await fetch(`https://js2-ecommerce-api.vercel.app/api/products/${productId}`)
+          const data = await res.json()
+          setProduct(data)
+          setImgSrc(data.images)
+    
+        } catch(err) {console.log('error')}
+      }
+      getProduct()
     }, [])
 
   return (
