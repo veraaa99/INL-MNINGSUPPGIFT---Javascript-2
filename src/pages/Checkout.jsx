@@ -1,23 +1,14 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useOrderContext } from "../contexts/OrderContext"
+import ShoppingCartList from "../components/ShoppingCartList";
+import { ShoppingCartContext, useShoppingCartContext } from "../contexts/ShoppingCartContext";
+import SetQuantityButton from "../components/SetQuantityButton";
 
 function Checkout() {
 
-  const { orders } = useOrderContext()
-
-  useEffect(() => {
-    console.log(orders);
-}, [orders]);
-
   return (
     <div>
-      <ul>
-        {
-          orders.map((order) => (
-            <p key={order.order._id}>{order.order._id}</p>
-          ))
-        }
-      </ul>
+       <ShoppingCartList />
     </div>
   )
 }

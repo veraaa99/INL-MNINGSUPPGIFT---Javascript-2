@@ -4,42 +4,86 @@ export const OrderContext = createContext()
 
 function OrderContextProvider({ children }) {
 
-    const [orders, setOrders] = useState([])
     const [order, setOrder] = useState({})
-    const [quantity, setQuantity] = useState('')
+    const [orders, setOrders] = useState([])
+    const [shoppingCart, setShoppingCart] = useState([])
 
-    const saveOrder = async (values) => { 
+    let [totalQuantity, setTotalQuantity] = useState(0)
+    let [productQuantity, setProductQuantity] = useState(0)
+
+    const saveOrder = async (values, id) => { 
+
         const newOrder = {
             products: [
                 { 
-                productId: values, 
+                productId: id, 
                 quantity: 1 
                 }
             ]
         }
+
+        console.log(newOrder)
+        console.log(values)
+
         const res = await fetch('https://js2-ecommerce-api.vercel.app/api/orders', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newOrder)
-              }).catch((err) => console.log('error'))
+        }).catch((err) => console.log('error'))
 
-             const data = await res.json()
+        const data = await res.json()
+        console.log(data)
 
-            //  addOrder(data)
+            //  addOrder(data, values)
 
-            //  addOrder(newOrder)
-              setOrder(data)
-              setOrders([...orders, data])
-            // console.log(newOrder)
-            // console.log(orders)
+            //  const item = shoppingCart.find((product) => product.products.productId === newOrder.products.productId)
+            //  console.log(item)
+
+            //  if(item) {
+            //    item.products.quantity++
+            //    console.log('bla')
+            //  } else {
+            //     setShoppingCart([newOrder])
+            //     console.log('bla2')
+            //  }
+            // //  addOrder(data)
+
+            // //  addOrder(newOrder)
+            //   setOrder(data)
+            //   setOrders([...orders, data])
+            // // console.log(newOrder)
+            // // console.log(orders)
+               
     }
 
-    const addOrder = (product) => {
-        setOrders(state => {
-          return[...state, { product }]
-        })
+    // const placeOrder = (product) => {
+    //     setOrders(state => {
+    //       return[...state, { product }]
+    //     })
+    // }
+
+    const addOrder = (data, values) => {
+        console.log(data)
+        console.log(values)
+        // const bla = newOrder.products.map(x => x.quantity);
+
+        // console.log(newOrder.products[0].quantity)
+
+        const item = shoppingCart.find((product) => product === values)
+        console.log(item)
+
+        if(item) {
+        // setQuantity(quantity++)
+        // console.log(quantity)
+        } else {
+        setShoppingCart([...shoppingCart, values])         
+        console.log(shoppingCart)
+        }
+
+        setOrder(data)
+        setOrders([...orders, data])
     }
 
     useEffect(() => {
@@ -49,6 +93,14 @@ function OrderContextProvider({ children }) {
     useEffect(() => {
         console.log(order);
     }, [order]);
+
+    useEffect(() => {
+        console.log(shoppingCart);
+    }, [shoppingCart]);
+
+    // useEffect(() => {
+    //     console.log(quantity);
+    // }, [quantity]);
 
     const value = {
         orders,

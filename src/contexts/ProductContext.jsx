@@ -14,6 +14,7 @@ function ProductContextProvider({ children }) {
       const res = await fetch('https://js2-ecommerce-api.vercel.app/api/products')
       const data = await res.json()
       setProducts(data)
+      return true
     }
     catch(err) {console.log('error')}
   }
