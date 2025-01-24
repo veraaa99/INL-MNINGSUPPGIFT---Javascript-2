@@ -3,11 +3,10 @@ import useQuantityChange from "../hooks/useQuantityChange"
 import { useShoppingCartContext } from "../contexts/ShoppingCartContext"
 import useSum from "../hooks/useSum"
 
-function SetQuantityButton( product ) {
+function SetShoppingCartQuantityButton( product ) {
 
-// const { productQuantity } = useShoppingCartContext()
-// const { setProductQuantity } = useShoppingCartContext()
 const { addShoppingListItem } = useShoppingCartContext()
+const { removeQuantity } = useShoppingCartContext()
 
 const {
     increaseProductQuantity,
@@ -21,18 +20,12 @@ const {
     getSum
 } = useQuantityChange()
 
-const addItem = () => {
-  // setProductQuantity(product.quantity)>
-  addShoppingListItem(product, quantity)
-}
-
   return (
     <div>
-        <button onClick={() => decreaseProductQuantity()}>-</button>
-        <p>{ quantity }</p>
+        <button>-</button>
         <button onClick={() => increaseProductQuantity()}>+</button>
-        <button onClick={() => addItem()}>Add to cart</button>
+        <button onClick={() => addShoppingListItem(product, quantity)}>Add to cart</button>
     </div>
   )
 }
-export default SetQuantityButton
+export default SetShoppingCartQuantityButton

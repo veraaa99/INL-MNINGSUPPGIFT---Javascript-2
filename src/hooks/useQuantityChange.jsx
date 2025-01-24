@@ -4,31 +4,30 @@ import { useShoppingCartContext } from "../contexts/ShoppingCartContext"
 function useQuantityChange () {
 
     const [quantity, setQuantity] = useState(1)
+    const [productQuantity, setProductQuantity] = useState()
     const { sum } = useShoppingCartContext()
     const { setSum } = useShoppingCartContext()
 
     const { shoppingItems } = useShoppingCartContext()
-    const { productQuantity } = useShoppingCartContext()
-    const { setProductQuantity } = useShoppingCartContext()
+    const { setShoppingItems } = useShoppingCartContext()
+    const { checkProduct } = useShoppingCartContext()
+    // const { setProductQuantity } = useShoppingCartContext()
 
     const increaseProductQuantity = ( e ) => {
-        setProductQuantity(productQuantity + 1)
         setQuantity(quantity + 1)
+        // setProductQuantity(quantity + 1)
 
-        // const newSum = shoppingItems.reduce((a,v) =>  a = a + v.product.product.price , 0 )
-        // setSum(newSum)
-
-        return quantity, productQuantity
+        return quantity
     }
 
     const decreaseProductQuantity = ( e ) => {
-        setProductQuantity(productQuantity - 1)
+        if(quantity === 0){
+            return 
+        }
+
         setQuantity(quantity - 1)
 
-        // const newSum = shoppingItems.reduce((a,v) =>  a = a - v.product.product.price , 0 )
-        // setSum(newSum)
-
-        return productQuantity, quantity
+        return quantity
     }
 
     const getSum = () => {
@@ -40,6 +39,8 @@ function useQuantityChange () {
     decreaseProductQuantity,
     quantity,
     setQuantity,
+    productQuantity, 
+    setProductQuantity,
     sum,
     setSum,
     getSum

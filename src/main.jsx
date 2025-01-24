@@ -84,8 +84,13 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    {/* <BrowserRouter>
+  // <StrictMode>
+    <div>
+    <Providers>
+      <RouterProvider router={router}/>
+    </Providers>
+    </div>
+    /* <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
 
@@ -103,10 +108,8 @@ createRoot(document.getElementById('root')).render(
         </Route>
 
       </Routes>
-    </BrowserRouter> */}
-    <Providers>
-      <RouterProvider router={router}/>
-    </Providers>
+    </BrowserRouter> */
+    
 
-  </StrictMode>,
+  // </StrictMode>,
 )

@@ -5,15 +5,15 @@ import ShoppingCartContextProvider from "./ShoppingCartContext"
 
 const Providers = ({ children }) => {
     return (
-        <ShoppingCartContextProvider>
-            <MessageContextProvider>
-                <OrderContextProvider>
-                    <ProductContextProvider>
-                        { children }
-                    </ProductContextProvider>
-                </OrderContextProvider>
-            </MessageContextProvider>
-        </ShoppingCartContextProvider>
+        <OrderContextProvider>
+            <ShoppingCartContextProvider>
+                <MessageContextProvider>
+                        <ProductContextProvider>
+                            { children }
+                        </ProductContextProvider>
+                </MessageContextProvider>
+            </ShoppingCartContextProvider>
+        </OrderContextProvider>
     )
 }
 export default Providers

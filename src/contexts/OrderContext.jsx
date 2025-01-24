@@ -59,7 +59,7 @@ function OrderContextProvider({ children }) {
         setOrders,
         order,
         setOrder,
-        placeOrder,
+        placeOrder
     }
 
     return (
