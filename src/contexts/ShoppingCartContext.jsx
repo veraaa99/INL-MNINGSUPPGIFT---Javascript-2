@@ -10,6 +10,7 @@ function ShoppingCartContextProvider( { children }) {
 
     const [shoppingItems, setShoppingItems] = useState([])
     const [shoppingItem, setShoppingItem] = useState({})
+    const [state3, setState3] = useState()
 
     // let [totalQuantity, setTotalQuantity] = useState(0)
 
@@ -114,8 +115,10 @@ function ShoppingCartContextProvider( { children }) {
             setSum,
             calculateSum,
             removeShoppingListItem,
-            removeAllItems
+            removeAllItems,
             // addToCart,
+            state3,
+            setState3
             
         }
     

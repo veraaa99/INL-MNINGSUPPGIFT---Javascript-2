@@ -16,17 +16,12 @@ function ShoppingCartList() {
   const { addToCart } = useShoppingCartContext()
   const { removeAllItems } = useShoppingCartContext()
 
-  const [state3, setState3] = useState()
-  
+  const { state3 } = useShoppingCartContext()
+  const { setState3 } = useShoppingCartContext()
+
   useEffect(() => {
     calculateSum()
   }, [])
-
-  useEffect(() => {
-      removeAllItems()
-      console.log(state3)
-      setState3(0)
-  }, [state3])
 
   return (
     <div>
@@ -42,7 +37,7 @@ function ShoppingCartList() {
           
         }
           <div>Total: { sum } </div>
-          <button onClick={() => setState3(sum)}>Hejdå alla</button>
+          <button onClick={() => removeAllItems()}>Hejdå alla</button>
         </ul>
     </div>
   )

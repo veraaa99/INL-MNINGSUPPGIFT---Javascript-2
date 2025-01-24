@@ -31,8 +31,9 @@ function Checkout() {
   return (
     <>
       <div>
+      <ShoppingCartList />
+
         <form onSubmit={onSubmit}>
-        <ShoppingCartList />
 
         <FormInput label="Name" name="name" id="name" type="text" value={form.name} onChange={handleChange} errorMsg={errors.name}/>
         <FormInput label="Email" name="email" id="email" type="email" value={form.email} onChange={handleChange} errorMsg={errors.email} />
