@@ -22,6 +22,7 @@ function Products() {
   const { shoppingItems } = useShoppingCartContext()
   const { getShoppingList } = useShoppingCartContext()
   const { sum } = useShoppingCartContext()
+  const { cartIsOpen } = useShoppingCartContext()
 
   useEffect(() => {
     getProducts()
@@ -31,7 +32,7 @@ function Products() {
     <>
     <div>
        <ShoppingCartList />
-       { shoppingItems.length > 0 && <button><NavLink to="/Checkout">Checkout</NavLink></button> }
+       {  cartIsOpen && <button><NavLink to="/Checkout">Checkout</NavLink></button> }
     </div>
       <div>
         <ul>

@@ -15,6 +15,7 @@ function ShoppingCartList() {
   const { calculateSum } = useShoppingCartContext()
   const { addToCart } = useShoppingCartContext()
   const { removeAllItems } = useShoppingCartContext()
+  const { cartIsOpen } = useShoppingCartContext()
 
   const { state3 } = useShoppingCartContext()
   const { setState3 } = useShoppingCartContext()
@@ -27,7 +28,7 @@ function ShoppingCartList() {
     <div>
       <ul>
         {
-           shoppingItems && shoppingItems.map((product) => ( 
+           cartIsOpen && shoppingItems.map((product) => ( 
             <div key={product.product.product._id}>
               {/* <SetQuantityButton product={product.product.product} /> */}
               {/* <SetShoppingCartQuantityButton product={product.product.product} /> */}
@@ -36,8 +37,13 @@ function ShoppingCartList() {
           ))
           
         }
-          <div>Total: { sum } </div>
-          <button onClick={() => removeAllItems()}>Hejdå alla</button>
+        
+        { cartIsOpen && 
+        <>
+            <div>Total: { sum } </div>
+            <button onClick={() => removeAllItems()}>Hejdå alla</button>
+        </>
+        }
         </ul>
     </div>
   )

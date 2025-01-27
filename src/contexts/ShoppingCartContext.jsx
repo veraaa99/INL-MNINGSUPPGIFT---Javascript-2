@@ -1,7 +1,7 @@
 //TESTA REDUCE/DISPATCH SOM I VIDEON!
 
 
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useReducer, useState } from "react"
 import useQuantityChange from "../hooks/useQuantityChange"
 
 export const ShoppingCartContext = createContext()
@@ -11,13 +11,18 @@ function ShoppingCartContextProvider( { children }) {
     const [shoppingItems, setShoppingItems] = useState([])
     const [shoppingItem, setShoppingItem] = useState({})
     const [state3, setState3] = useState()
+    const [state2, setState2] = useState()
+    const [totalQuantity, setTotalQuantity] = useState()
+    const [cartIsOpen, setCartIsOpen] = useState(false)
 
     // let [totalQuantity, setTotalQuantity] = useState(0)
 
     const initialState = {
-        cart: [],
-        totalPrice: 0,
-        totalQuantity: 0
+        productQuantity: 1
+    }
+
+    const initialState2 = {
+        productQuantity: 1
     }
 
     // let [productQuantity, setProductQuantity] = useState() 
@@ -25,6 +30,40 @@ function ShoppingCartContextProvider( { children }) {
 
     let [newList, setNewList] = useState(shoppingItems)
     let [sum, setSum] = useState(0)
+
+    // const [state, dispatch] = useReducer(reducer, initialState);
+
+    // function reducer(state, action) {
+
+    //   if (action.type === 'incremented_quantity') {
+
+    //     // age = age + 1
+
+    //     // product.quantity++
+
+    //     // console.log(product.quantity)
+    //     console.log(shoppingItems)
+
+    //     setState2(initialState)
+    //     console.log(state2)
+
+    //     return {
+    //         totalQuantity: state.totalQuantity + 1
+    //     }
+    //   } else if (action.type === 'reduced_quantity') {
+
+    //     // item.quantity--
+    //     // age = age - 1
+
+    //     setState2(initialState)
+    //     console.log(state2)
+
+    //     return {
+    //         totalQuantity: state.totalQuantity - 1
+    //     }
+    //   }
+    //   throw Error('Unknown action.');
+    // }
 
     const addShoppingListItem = ( product, quantity ) => {
         const id= product.product._id
@@ -78,6 +117,16 @@ function ShoppingCartContextProvider( { children }) {
 
     }
 
+    const calculateQuantity = () => {
+        let newQuantity = shoppingItems.reduce((previousValue, currentValue) => {
+            return previousValue + currentValue.quantity;
+        }, 0);
+
+        setTotalQuantity(newQuantity)
+        return newQuantity
+
+    }
+
     const removeShoppingListItem = (id) => {
         const newShoppingItems = shoppingItems.filter((product) => product.product.product._id !== id);
      
@@ -118,7 +167,18 @@ function ShoppingCartContextProvider( { children }) {
             removeAllItems,
             // addToCart,
             state3,
-            setState3
+            setState3,
+            state2,
+            setState2,
+            initialState,
+            initialState2,
+            totalQuantity,
+            setTotalQuantity,
+            calculateQuantity,
+            cartIsOpen,
+            setCartIsOpen
+            // state,
+            // dispatch
             
         }
     

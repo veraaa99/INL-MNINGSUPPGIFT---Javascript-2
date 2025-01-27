@@ -16,6 +16,9 @@ function ShoppingCartItem( { product } ) {
     const { addShoppingListItem } = useShoppingCartContext()
     const { removeShoppingListItem } = useShoppingCartContext()
     const { removeAllItems } = useShoppingCartContext()
+    const { initialState } = useShoppingCartContext()
+    const { calculateQuantity } = useShoppingCartContext()
+    const { totalQuantity } = useShoppingCartContext()
 
     const [state2, setState2] = useState()
     // const { addToCart } = useShoppingCartContext()
@@ -61,12 +64,12 @@ function ShoppingCartItem( { product } ) {
       if(product.quantity === 0) {
         removeShoppingListItem(product.product.product._id)
       }
-
       calculateSum()
+      calculateQuantity()
 
     }, [state2])
 
-    const [state, dispatch] = useReducer(reducer, { age: product.quantity });
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     function reducer(state, action) {
       if (action.type === 'incremented_quantity') {
@@ -79,7 +82,7 @@ function ShoppingCartItem( { product } ) {
         console.log(state2)
 
         return {
-          age: state.age + 1
+          productQuantity: state.productQuantity + 1
         }
       } else if (action.type === 'reduced_quantity') {
 
@@ -89,7 +92,7 @@ function ShoppingCartItem( { product } ) {
         console.log(state2)
 
         return {
-          age: state.age - 1
+          productQuantity: state.productQuantity - 1
         }
       }
       throw Error('Unknown action.');
@@ -97,14 +100,10 @@ function ShoppingCartItem( { product } ) {
   
     return (
       <>
-        <li>{product.product.product.name} x {state.age} st</li>
+        <li>{product.product.product.name} x { product.quantity} st</li>
         <li>{product.product.product.price} kr/st </li>
         <button onClick={() => dispatch({ type: 'incremented_quantity' })}>Hej</button>
         <button onClick={() => dispatch({ type: 'reduced_quantity' })}>Hejdå</button>
-        {/* <button onClick={() => dispatch({ type: 'delete_all' })}>Hejdå alla</button> */}
-
-        {/* <SetQuantityButton product={product.product.product} /> */}
-        {/* <SetShoppingCartQuantityButton product={product.product.product} /> */}
       </>
     )
 }
