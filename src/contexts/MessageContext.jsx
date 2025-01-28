@@ -21,12 +21,10 @@ const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
                 },
                 body: JSON.stringify(newMessage)
             })
-            const data = await response.json()
 
-            console.log(data) 
-            console.log(checkResponse(response.status)) 
-
-            return (checkResponse(response.status))
+            if (checkResponse(response.status)) {
+                setIsMessageSubmitted(true)
+            }
 
         } catch (error) {
             console.error(error.message)

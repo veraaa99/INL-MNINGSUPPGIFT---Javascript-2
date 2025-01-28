@@ -4,7 +4,6 @@ function useShoppingList( shoppingData ) {
 
     const [shoppingList, setShoppingList] = useState({...shoppingData})
 
-
    return {
     shoppingList,
     errors,

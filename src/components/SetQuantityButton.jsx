@@ -1,42 +1,29 @@
 import { useEffect, useReducer, useState } from "react"
 import useQuantityChange from "../hooks/useQuantityChange"
 import { useShoppingCartContext } from "../contexts/ShoppingCartContext"
-import useSum from "../hooks/useSum"
 
 function SetQuantityButton( product ) {
 
-// const { productQuantity } = useShoppingCartContext()
-// const { setProductQuantity } = useShoppingCartContext()
-const { addShoppingListItem } = useShoppingCartContext()
-const { calculateSum } = useShoppingCartContext()
-const { calculateQuantity } = useShoppingCartContext()
-const { shoppingItems } = useShoppingCartContext()
+  const { addShoppingListItem } = useShoppingCartContext()
+  const { calculateSum } = useShoppingCartContext()
+  const { calculateQuantity } = useShoppingCartContext()
 
-const { initialState2 } = useShoppingCartContext()
-const [state3, setState3] = useState()
-
-const {
-    increaseProductQuantity,
-    decreaseProductQuantity,
-    quantity,
-    setQuantity,
-    productQuantity, 
-    setProductQuantity,
-    sum,
-    setSum,
-    getSum,
-} = useQuantityChange()
+  const { initialState2 } = useShoppingCartContext()
+  const [itemAdded, setItemAdded] = useState()
 
   const [state, dispatch] = useReducer(reducer2, initialState2);
+
+  const {
+      increaseProductQuantity,
+      decreaseProductQuantity,
+      quantity,
+      setQuantity
+  } = useQuantityChange()
 
   function reducer2(state, action) {
     if (action.type === 'incremented_quantity') {
 
-      console.log(product.quantity)
-      console.log(shoppingItems)
-
-      setState3(state.productQuantity + 1)
-      console.log(state3)
+      setItemAdded(state.productQuantity + 1)
 
       return {
         productQuantity: state.productQuantity + 1
@@ -49,11 +36,11 @@ const {
     calculateQuantity()
     calculateSum()
 
-  }, [state3])
+  }, [itemAdded])
 
   const addToCart = () => {
     addShoppingListItem(product, quantity)
-
+    setQuantity(1)
   }
 
   return (

@@ -28,13 +28,8 @@ function useForm( formData ) {
     }
 
     setForm(formData)
-    setIsMessageSubmitted(true)
-
     cb(form)
-
   }
-
-  console.log(form)
 
   return {
     form,

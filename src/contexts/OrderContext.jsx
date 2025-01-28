@@ -1,5 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import Products from "../pages/Products";
+import { createContext, useContext, useState } from "react";
 
 export const OrderContext = createContext()
 
@@ -7,14 +6,8 @@ function OrderContextProvider({ children }) {
 
     const [order, setOrder] = useState({})
     const [orders, setOrders] = useState([{}])
-    const [shoppingCart, setShoppingCart] = useState([])
-
-    let [totalQuantity, setTotalQuantity] = useState(0)
-    let [productQuantity, setProductQuantity] = useState(0)
 
     const placeOrder = (values) => { 
-
-        console.log(values)
 
         const newData = values.map((item)=>{
             return {
@@ -30,7 +23,6 @@ function OrderContextProvider({ children }) {
             return {productId: item.product.product._id, quantity: item.quantity}
           })
 
-        console.log(newOrder)
         sendOrder(newOrder)
     }
 
@@ -39,8 +31,6 @@ function OrderContextProvider({ children }) {
         const order = {
             products: newOrder
         }
-
-        console.log(order)
 
         const res = await fetch('https://js2-ecommerce-api.vercel.app/api/orders', {
                     method: 'POST',
@@ -51,7 +41,6 @@ function OrderContextProvider({ children }) {
             }).catch((err) => console.log('error'))
 
         const data = await res.json()
-        console.log(data) 
     }
 
     const value = {

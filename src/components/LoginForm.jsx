@@ -2,12 +2,6 @@ import { useState, useRef } from "react"
 
 function LoginForm() {
 
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-
-  // const emailRef = useRef(null)
-  // const passwordRef = useRef(null)
-
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -31,15 +25,6 @@ function LoginForm() {
 
       formData.email = ''
       formData.password = ''
-
-      // const user = {
-      //     email: emailRef.current.value,
-      //     password: passwordRef.current.value
-      // }
-      // console.log(user)
-
-      // emailRef.current.value = ''
-      // passwordRef.current.value = ''
   }
 
   const validate = () => {
@@ -64,13 +49,11 @@ function LoginForm() {
             <div>
                 <label htmlFor="email">Email</label>
                 <input value={formData.email} onChange={handleChange} type="email" id="email" />
-                {/* <input ref={emailRef} type="email" id="email" /> */}
                 {formErrors.email && <p>{formErrors.email}</p>}
             </div>
             <div>
                 <label htmlFor="password">Password</label>
                 <input value={formData.password} onChange={handleChange} type="text" id="password" />
-                {/* <input ref={passwordRef} type="text" id="password" /> */}
                 {formErrors.password && <p>{formErrors.password}</p>}
             </div>
             <button>Login</button>

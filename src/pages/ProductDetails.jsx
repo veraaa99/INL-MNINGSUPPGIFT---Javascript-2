@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router"
-import { ProductContext, useProductContext } from "../contexts/ProductContext"
+import { useProductContext } from "../contexts/ProductContext"
+import SetQuantityButton from "../components/SetQuantityButton"
 
 function ProductDetails() {
 
@@ -9,7 +10,6 @@ function ProductDetails() {
     const { product } = useProductContext()
     const { setProduct } = useProductContext()
     const { setProductId } = useProductContext()
-    const { getProduct } = useProductContext()
     const { imgSrc } = useProductContext()
     const { setImgSrc } = useProductContext()
 
@@ -39,6 +39,7 @@ function ProductDetails() {
         <h1>{product.name}</h1>
         <p>Price: {product.price} kr</p>
         <p>{product.description}</p>
+        <SetQuantityButton product={product} />
       </div>
     </div>
   )

@@ -1,18 +1,16 @@
-import { useRef } from "react"
 import { useMessageContext } from "../contexts/MessageContext"
 import useForm from "../hooks/useForm"
 import FormInput from "./FormInput"
 
 function ContactForm() {
 
-    const { form, errors, handleChange, handleSubmit, setForm } = useForm({
+    const { form, errors, handleChange, handleSubmit } = useForm({
         name: '',
         email: '',
         message: ''
     })
 
     const { isMessageSubmitted } = useMessageContext()
-    const { setIsMessageSubmitted } = useMessageContext()
     const { sendMessage } = useMessageContext()
 
     const onSubmit = (e) => {
