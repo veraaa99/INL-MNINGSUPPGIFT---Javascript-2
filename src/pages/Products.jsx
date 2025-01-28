@@ -13,18 +13,33 @@ function Products() {
   }, [])
 
   return (
-      <div>
-        <ul>
+    <>
+    <div className='m-8'>
+      <h1 className='text-5xl justify-self-center px-5'>PRODUCTS</h1>
+        <ul className='grid grid-cols-3 gap-6 m-5'>
           {
             products.map((product) => (
-              <div key={product._id}>
-                <li><Link to={`/Products/${product._id}`}>{product.name}</Link></li>
+              <div className='flex flex-col' key={product._id}>
+                <div>
+                  <Link to={`/Products/${product._id}`}>
+                    <img className='object-contain' src={product.images[0]} ></img>
+                  </Link>
+                </div>
+                <div className='flex flex-row justify-between p-3'>
+                  <div>
+                    <li><Link to={`/Products/${product._id}`}>{product.name}</Link></li>
+                    <p>Price: {product.price} kr</p>
+                  </div>
+                  <div className='grid justify-items-center'>
                   <SetQuantityButton product={product} />
+                  </div>
+                </div>
               </div>
             ))
           }
         </ul>
       </div>
+    </>
   )
 
 }

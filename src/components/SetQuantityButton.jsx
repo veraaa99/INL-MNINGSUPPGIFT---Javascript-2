@@ -44,7 +44,7 @@ function SetQuantityButton( product ) {
   }
 
   return (
-    <div>
+    <div className='flex justify-items-center items-center gap-3'>
         <button onClick={() => decreaseProductQuantity()}>-</button>
         <p>{ quantity }</p>
         <button onClick={() => increaseProductQuantity()}>+</button>
