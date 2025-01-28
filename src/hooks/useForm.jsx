@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { validate } from "../utils/validate"
+import { useMessageContext } from "../contexts/MessageContext"
 
 function useForm( formData ) {
 
   const [form, setForm] = useState({...formData})
   const [errors, setErrors] = useState({})
+  const { setIsMessageSubmitted } = useMessageContext()
 
   const handleChange = (e) => {
     const{name, value} = e.target
@@ -13,25 +15,33 @@ function useForm( formData ) {
         ...data,
         [name]: value
     }))
-  }
 
+    setIsMessageSubmitted(false)
+
+  }
 
   const handleSubmit = (e, cb) => {
     e.preventDefault()
 
     if(!validate(form, setErrors)) {
-
         return
     }
 
+    setForm(formData)
+    setIsMessageSubmitted(true)
+
     cb(form)
+
   }
+
+  console.log(form)
 
   return {
     form,
     errors,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    setForm
   }
 }
 export default useForm

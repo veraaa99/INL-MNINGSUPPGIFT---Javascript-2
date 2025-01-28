@@ -1,8 +1,10 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const MessageContext = createContext()
 
 function MessageContextProvider({ children }) {
+
+const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
 
     const sendMessage = async (values) => {
         const newMessage = {
@@ -20,15 +22,25 @@ function MessageContextProvider({ children }) {
                 body: JSON.stringify(newMessage)
             })
             const data = await response.json()
+
             console.log(data) 
-    
+            console.log(checkResponse(response.status)) 
+
+            return (checkResponse(response.status))
+
         } catch (error) {
             console.error(error.message)
         }
     }
 
+    const checkResponse = (response) => {
+        return response == 200;
+    }
+
     const value = {
-        sendMessage
+        sendMessage,
+        isMessageSubmitted,
+        setIsMessageSubmitted
     }
 
     return (

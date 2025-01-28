@@ -40,7 +40,7 @@ function ShoppingCartList() {
         
         { cartIsOpen && 
         <>
-            <div>Total: { sum } </div>
+            <div>Total: { sum } kr</div>
             <button onClick={() => removeAllItems()}>Hejdå alla</button>
         </>
         }

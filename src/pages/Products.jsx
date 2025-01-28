@@ -29,11 +29,6 @@ function Products() {
   }, [])
 
   return (
-    <>
-    <div>
-       <ShoppingCartList />
-       {  cartIsOpen && <button><NavLink to="/Checkout">Checkout</NavLink></button> }
-    </div>
       <div>
         <ul>
           {
@@ -46,7 +41,6 @@ function Products() {
           }
         </ul>
       </div>
-    </>
   )
 
 }
