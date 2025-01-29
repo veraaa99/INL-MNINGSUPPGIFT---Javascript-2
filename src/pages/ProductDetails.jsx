@@ -13,10 +13,6 @@ function ProductDetails() {
     const { imgSrc } = useProductContext()
     const { setImgSrc } = useProductContext()
 
-    const [image1, setImage1] = useState(1)
-    const [image2, setImage2] = useState(2)
-    const [image3, setImage3] = useState(3)
-
     const [bigImage, setBigImage] = useState()
 
     useEffect(() => {
@@ -30,7 +26,7 @@ function ProductDetails() {
           setBigImage(data.images[0])
           return true
     
-        } catch(err) {console.log('error')}
+        } catch(err) {console.log(err.message)}
       }
       getProduct()
 
@@ -47,7 +43,6 @@ function ProductDetails() {
 
       setImgSrc(tempArray)
       setBigImage(image)
-
     }
 
   return (
@@ -57,7 +52,7 @@ function ProductDetails() {
         <img className='object-contain rounded-xl'src={bigImage}></img>
         </div>
 
-        <div className='grid grid-cols-3 justify-evenly gap-2'>
+        <div className={`grid grid-cols-${imgSrc.length - 1} justify-evenly gap-2`}>
         {
           imgSrc.slice(1).map((image) => (
             <img key={image} className='object-contain rounded-lg' src={image} onClick={() => {viewImage(image)}}></img>

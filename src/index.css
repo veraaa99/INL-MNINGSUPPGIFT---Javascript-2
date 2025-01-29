@@ -6,17 +6,16 @@
 
 .modal-backdrop {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
-  position: relative;
-  width: 70%;
+  position: absolute;
   background-color: white;
-  border-radius: 10px;
+  border: 5px solid white;
   padding: 20px;
-  margin:20px auto;
+
+  width: 500px;
+  right: 0;
+  top: 10px;
 }

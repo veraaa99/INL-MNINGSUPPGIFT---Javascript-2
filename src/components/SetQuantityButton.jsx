@@ -45,10 +45,10 @@ function SetQuantityButton( product ) {
 
   return (
     <div className='flex justify-items-center items-center gap-3'>
-        <button onClick={() => decreaseProductQuantity()}>-</button>
+        <button className='border-1 border-solid rounded-md px-4 py-2' onClick={() => decreaseProductQuantity()}>-</button>
         <p>{ quantity }</p>
-        <button onClick={() => increaseProductQuantity()}>+</button>
-        <button onClick={() => {dispatch({ type: 'incremented_quantity' }); addToCart()}}>Add to cart</button>
+        <button className='border-1 border-solid rounded-md px-4 py-2' onClick={() => increaseProductQuantity()}>+</button>
+        <button className='border-1 border-solid rounded-md px-4 py-2' onClick={() => {dispatch({ type: 'incremented_quantity' }); addToCart()}}>Add to cart</button>
     </div>
   )
 }

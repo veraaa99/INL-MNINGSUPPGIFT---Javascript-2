@@ -20,13 +20,16 @@ function ContactForm() {
     }
 
   return (
-    <div>
+    <div className='w-100' >
+        <h2 className='text-4xl my-6'>Contact us:</h2>
         <form onSubmit={onSubmit}>
-            <FormInput label="Name" name="name" id="name" type="text" value={form.name} onChange={handleChange} errorMsg={errors.name}/>
-            <FormInput label="Email" name="email" id="email" type="email" value={form.email} onChange={handleChange} errorMsg={errors.email} />
-            <FormInput label="Message" name="message" id="message" type="text" value={form.message} onChange={handleChange} errorMsg={errors.message}/>
+            <div className='flex flex-col'>
+                <FormInput label="Name" name="name" id="name" type="text" value={form.name} onChange={handleChange} errorMsg={errors.name}/>
+                <FormInput label="Email" name="email" id="email" type="email" value={form.email} onChange={handleChange} errorMsg={errors.email} />
+                <FormInput label="Message" name="message" id="message" type="text" value={form.message} onChange={handleChange} errorMsg={errors.message}/>
 
-            <button>Submit</button>
+            </div>
+            <button className='p-2 px-5 border-1 border-solid rounded-md mt-7'>Submit</button>
         </form>
         { isMessageSubmitted && <p>Message succesfully submitted!</p>}
     </div>

@@ -19,7 +19,7 @@ function ShoppingCartList() {
       <ul>
         {
            shoppingItems.map((product) => ( 
-            <div key={product.product.product._id}>
+            <div className='p-3' key={product.product.product._id}>
               <ShoppingCartItem product={product}/>
             </div>
           ))
@@ -27,10 +27,10 @@ function ShoppingCartList() {
         }
         
         { shoppingItems.length > 0 && 
-        <>
-            <div>Total: { sum } kr</div>
-            <button onClick={() => removeAllItems()}>Hejdå alla</button>
-        </>
+        <div className='p-3 mt-10'>
+            <div className='text-lg'>Total: { sum } kr</div>
+            <button className='p-2 border-1 border-solid rounded-md mt-2' onClick={() => removeAllItems()}>Remove all items</button>
+        </div>
         }
         </ul>
     </div>

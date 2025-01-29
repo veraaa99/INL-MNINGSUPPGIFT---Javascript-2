@@ -45,10 +45,19 @@ function ShoppingCartItem( { product } ) {
   
     return (
       <>
-        <li>{product.product.product.name} x { product.quantity} st</li>
-        <li>{product.product.product.price} kr/st </li>
-        <button onClick={() => dispatch({ type: 'incremented_quantity' })}>Hej</button>
-        <button onClick={() => dispatch({ type: 'reduced_quantity' })}>Hejdå</button>
+      <div className='grid grid-cols-2'>
+        <div>
+          <li>{product.product.product.name}</li>
+          <li> x { product.quantity} st</li>
+          <li className='mb-4'>{product.product.product.price} kr/st </li>
+          <button className='border-1 border-solid rounded-md px-3 py-1 pb-2 mr-3 text-center' onClick={() => dispatch({ type: 'incremented_quantity' })}>+</button>
+          <button className='border-1 border-solid rounded-md px-3.5 py-1 pb-2 text-center' onClick={() => dispatch({ type: 'reduced_quantity' })}>-</button>
+        </div>
+        <div>
+          <img className='object-cover rounded-lg' src={product.product.product.images[0]}></img>
+        </div>
+      </div>
+        
       </>
     )
 }

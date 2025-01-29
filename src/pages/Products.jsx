@@ -19,7 +19,7 @@ function Products() {
         <ul className='grid grid-cols-3 gap-6 m-5'>
           {
             products.map((product) => (
-              <div className='flex flex-col' key={product._id}>
+              <div className='flex flex-col text-sm' key={product._id}>
                 <div className=''>
                   <Link to={`/Products/${product._id}`}>
                     <img className='object-cover rounded-lg' src={product.images[0]} ></img>
