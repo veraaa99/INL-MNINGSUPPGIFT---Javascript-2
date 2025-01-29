@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { useProductContext } from "../contexts/ProductContext"
 import SetQuantityButton from "../components/SetQuantityButton"
@@ -13,6 +13,12 @@ function ProductDetails() {
     const { imgSrc } = useProductContext()
     const { setImgSrc } = useProductContext()
 
+    const [image1, setImage1] = useState(1)
+    const [image2, setImage2] = useState(2)
+    const [image3, setImage3] = useState(3)
+
+    const [bigImage, setBigImage] = useState()
+
     useEffect(() => {
       setProductId(productId)
       const getProduct = async() => {
@@ -21,25 +27,54 @@ function ProductDetails() {
           const data = await res.json()
           setProduct(data)
           setImgSrc(data.images)
+          setBigImage(data.images[0])
+          return true
     
         } catch(err) {console.log('error')}
       }
       getProduct()
+
     }, [])
 
+    const viewImage = (image) => {
+      
+      let tempArray = [...imgSrc]
+      const index = imgSrc.findIndex(obj => obj === image);
+      const index2 = imgSrc.findIndex(obj => obj === bigImage);
+
+      tempArray[index] = bigImage
+      tempArray[index2] = image
+
+      setImgSrc(tempArray)
+      setBigImage(image)
+
+    }
+
   return (
-    <div>
-      <div>
-        {<img src={imgSrc[0]}></img>}
-        {<img src={imgSrc[1]}></img>}
-        {<img src={imgSrc[2]}></img>}
-        {<img src={imgSrc[3]}></img>}
+    <div className='grid grid-cols-2'>
+      <div className='flex flex-col gap-1'>
+        <div>
+        <img className='object-contain rounded-xl'src={bigImage}></img>
+        </div>
+
+        <div className='grid grid-cols-3 justify-evenly gap-2'>
+        {
+          imgSrc.slice(1).map((image) => (
+            <img key={image} className='object-contain rounded-lg' src={image} onClick={() => {viewImage(image)}}></img>
+          ))
+        }
+        </div>
+
       </div>
-      <div>
-        <h1>{product.name}</h1>
-        <p>Price: {product.price} kr</p>
-        <p>{product.description}</p>
-        <SetQuantityButton product={product} />
+      <div className='flex flex-col justify-items-center'>
+        <div className='p-7'>
+          <h1 className='text-3xl pb-7'>{product.name}</h1>
+          <p>{product.description}</p>
+        </div>
+        <div className='p-8'>
+          <p className='pb-7' >Price: {product.price} kr</p>
+          <SetQuantityButton product={product} />
+        </div>
       </div>
     </div>
   )

@@ -20,9 +20,9 @@ function Products() {
           {
             products.map((product) => (
               <div className='flex flex-col' key={product._id}>
-                <div>
+                <div className=''>
                   <Link to={`/Products/${product._id}`}>
-                    <img className='object-contain' src={product.images[0]} ></img>
+                    <img className='object-cover rounded-lg' src={product.images[0]} ></img>
                   </Link>
                 </div>
                 <div className='flex flex-row justify-between p-3'>

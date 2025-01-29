@@ -6,7 +6,7 @@ function ProductContextProvider({ children }) {
 
   const [products, setProducts] = useState([])
   const [product, setProduct] = useState({})
-  const [imgSrc, setImgSrc] = useState('')
+  const [imgSrc, setImgSrc] = useState([])
   let [productId, setProductId] = useState('')
 
   const getProducts = async () => {
