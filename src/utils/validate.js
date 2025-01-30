@@ -19,6 +19,10 @@ export const validate = (form, setErrors) => {
         error.message = 'Please enter a message'
     }
 
+    if(form.address.trim() === '') {
+        error.message = 'Please enter a shipping address'
+    }
+
     setErrors(error)
 
     return Object.keys(error).length <= 0

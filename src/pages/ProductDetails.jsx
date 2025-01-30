@@ -46,16 +46,16 @@ function ProductDetails() {
     }
 
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-2 md:m-25 sm:m-10'>
       <div className='flex flex-col gap-1'>
-        <div>
+        <div className='justify-items-center'>
         <img className='object-contain rounded-xl'src={bigImage}></img>
         </div>
 
-        <div className={`grid grid-cols-${imgSrc.length - 1} justify-evenly gap-2`}>
+        <div className={`grid md:grid-cols-${imgSrc.length - 1} sm:grid-cols-2 justify-evenly gap-3`}>
         {
           imgSrc.slice(1).map((image) => (
-            <img key={image} className='object-contain rounded-lg' src={image} onClick={() => {viewImage(image)}}></img>
+            <img key={image} className='object-contain rounded-lg mt-5' src={image} onClick={() => {viewImage(image)}}></img>
           ))
         }
         </div>

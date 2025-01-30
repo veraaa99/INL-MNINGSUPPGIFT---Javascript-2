@@ -29,7 +29,7 @@ function ShoppingCartList() {
         { shoppingItems.length > 0 && 
         <div className='p-3 mt-10'>
             <div className='text-lg'>Total: { sum } kr</div>
-            <button className='p-2 border-1 border-solid rounded-md mt-2' onClick={() => removeAllItems()}>Remove all items</button>
+            <button className='cursor-pointer hover:bg-red-400 hover:text-white border-slate-400 p-2 border-1 border-solid rounded-md mt-2' onClick={() => removeAllItems()}>Remove all items</button>
         </div>
         }
         </ul>

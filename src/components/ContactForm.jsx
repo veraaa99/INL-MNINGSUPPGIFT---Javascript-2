@@ -27,9 +27,8 @@ function ContactForm() {
                 <FormInput label="Name" name="name" id="name" type="text" value={form.name} onChange={handleChange} errorMsg={errors.name}/>
                 <FormInput label="Email" name="email" id="email" type="email" value={form.email} onChange={handleChange} errorMsg={errors.email} />
                 <FormInput label="Message" name="message" id="message" type="text" value={form.message} onChange={handleChange} errorMsg={errors.message}/>
-
             </div>
-            <button className='p-2 px-5 border-1 border-solid rounded-md mt-7'>Submit</button>
+            <button className='cursor-pointer hover:bg-indigo-400 hover:text-white p-2 px-5 border-1 border-solid rounded-md mt-7'>Submit</button>
         </form>
         { isMessageSubmitted && <p>Message succesfully submitted!</p>}
     </div>
