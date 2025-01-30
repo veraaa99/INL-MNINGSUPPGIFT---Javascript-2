@@ -26,6 +26,8 @@ const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
                 setIsMessageSubmitted(true)
             }
 
+            return true
+
         } catch (error) {
             console.error(error.message)
         }
