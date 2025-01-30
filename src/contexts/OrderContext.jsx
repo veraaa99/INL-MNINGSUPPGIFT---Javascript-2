@@ -15,7 +15,7 @@ function OrderContextProvider({ children }) {
                 quantity: item.quantity
             }
         })
-          
+        
         setOrders(newData)
 
         // https://stackoverflow.com/questions/76192706/how-do-i-create-a-different-array-from-an-existing-array-in-react

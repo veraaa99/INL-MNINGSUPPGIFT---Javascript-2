@@ -27,20 +27,17 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
-import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from 'react-router'
+import {createBrowserRouter, RouterProvider } from 'react-router'
 import RootLayout from './layouts/RootLayout'
 
 import Contacts from './pages/Contacts'
 import Products from './pages/Products'
 import Home from './pages/Home'
-import Login from './pages/Login'
-import Registration from './pages/Registration'
 import ProductDetails from './pages/ProductDetails'
 import Checkout from './pages/Checkout'
 
 import NotFound from './pages/NotFound'
 import Providers from './contexts/Providers'
-import MessageContextProvider from './contexts/MessageContext'
 
 const router = createBrowserRouter([
   {
@@ -64,14 +61,6 @@ const router = createBrowserRouter([
         element: <Contacts />
       },
       {
-        path: 'login',
-        element: <Login />
-      },
-      {
-        path: 'registration',
-        element: <Registration />
-      },
-      {
         path: 'checkout',
         element: <Checkout />
       },
@@ -84,32 +73,9 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
     <div>
-    <Providers>
-      <RouterProvider router={router}/>
-    </Providers>
+      <Providers>
+        <RouterProvider router={router}/>
+      </Providers>
     </div>
-    /* <BrowserRouter>
-      <Routes>
-        <Route element={<RootLayout />}>
-
-          <Route index element={<Home />}/>
-          <Route path='products' element={<Products />}/>
-          <Route path='products/:productId' element={<ProductDetails />}/>
-
-          <Route path='contacts' element={<Contacts />}/>
-          <Route path='login' element={<Login />}/>
-          <Route path='registration' element={<Registration />}/>
-
-          <Route path='checkout' element={<Checkout />}/>
-
-          <Route path="*" element={<NotFound/>}/>
-        </Route>
-
-      </Routes>
-    </BrowserRouter> */
-    
-
-  // </StrictMode>,
 )

@@ -20,7 +20,7 @@ function ContactForm() {
     }
 
   return (
-    <div className='w-100' >
+    <div className='m-auto' >
         <h2 className='text-4xl my-6'>Contact us:</h2>
         <form onSubmit={onSubmit}>
             <div className='flex flex-col'>
@@ -30,7 +30,7 @@ function ContactForm() {
             </div>
             <button className='cursor-pointer hover:bg-indigo-400 hover:text-white p-2 px-5 border-1 border-solid rounded-md mt-7'>Submit</button>
         </form>
-        { isMessageSubmitted && <p>Message succesfully submitted!</p>}
+        { isMessageSubmitted && <h3 className='text-2xl m-auto pt-20'>Message succesfully submitted!</h3>}
     </div>
   )
 }

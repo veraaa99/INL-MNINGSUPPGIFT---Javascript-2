@@ -29,7 +29,6 @@ function ProductDetails() {
         } catch(err) {console.log(err.message)}
       }
       getProduct()
-
     }, [])
 
     const viewImage = (image) => {
@@ -47,9 +46,10 @@ function ProductDetails() {
 
   return (
     <div className='grid grid-cols-2 md:m-25 sm:m-10'>
+
       <div className='flex flex-col gap-1'>
         <div className='justify-items-center'>
-        <img className='object-contain rounded-xl'src={bigImage}></img>
+          <img className='object-contain rounded-xl'src={bigImage}></img>
         </div>
 
         <div className={`grid md:grid-cols-${imgSrc.length - 1} sm:grid-cols-2 justify-evenly gap-3`}>
@@ -61,16 +61,17 @@ function ProductDetails() {
         </div>
 
       </div>
-      <div className='flex flex-col justify-items-center'>
-        <div className='p-7'>
-          <h1 className='text-3xl pb-7'>{product.name}</h1>
-          <p>{product.description}</p>
-        </div>
-        <div className='p-8'>
-          <p className='pb-7' >Price: {product.price} kr</p>
-          <SetQuantityButton product={product} />
+        <div className='flex flex-col justify-items-center'>
+          <div className='p-7'>
+            <h1 className='text-3xl pb-7'>{product.name}</h1>
+            <p>{product.description}</p>
+          </div>
+          <div className='p-8'>
+            <p className='pb-7' >Price: {product.price} kr</p>
+            <SetQuantityButton product={product} />
         </div>
       </div>
+
     </div>
   )
 }

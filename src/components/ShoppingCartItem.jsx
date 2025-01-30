@@ -3,7 +3,6 @@ import { useShoppingCartContext } from "../contexts/ShoppingCartContext"
 
 function ShoppingCartItem( { product } ) {
   
-    // const { shoppingItems } = useShoppingCartContext()
     const { calculateSum } = useShoppingCartContext()
     const { removeShoppingListItem } = useShoppingCartContext()
     const { initialState } = useShoppingCartContext()
@@ -50,8 +49,8 @@ function ShoppingCartItem( { product } ) {
           <li>{product.product.product.name}</li>
           <li> x { product.quantity} st</li>
           <li className='mb-4'>{product.product.product.price} kr/st </li>
-          <button className='cursor-pointer hover:bg-indigo-400 hover:text-white border-1 border-solid rounded-md border-slate-400 px-3 py-1 pb-2 mr-3 text-center' onClick={() => dispatch({ type: 'incremented_quantity' })}>+</button>
-          <button className='cursor-pointer hover:bg-indigo-400 hover:text-white border-1 border-solid rounded-md border-slate-400 px-3.5 py-1 pb-2 text-center' onClick={() => dispatch({ type: 'reduced_quantity' })}>-</button>
+          <button className='cursor-pointer hover:bg-indigo-400 hover:text-white border-1 border-solid rounded-md border-slate-400 px-3.5 py-1 pb-2 mr-3 text-center' onClick={() => dispatch({ type: 'reduced_quantity' })}>-</button>
+          <button className='cursor-pointer hover:bg-indigo-400 hover:text-white border-1 border-solid rounded-md border-slate-400 px-3 py-1 pb-2 text-center' onClick={() => dispatch({ type: 'incremented_quantity' })}>+</button>
         </div>
         <div>
           <img className='object-cover rounded-lg' src={product.product.product.images[0]}></img>

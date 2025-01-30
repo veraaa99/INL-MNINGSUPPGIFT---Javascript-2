@@ -1,4 +1,5 @@
 const emailRegExr = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+// Email address validation from user gskinner at https://regexr.com/3e48o 
 
 export const validate = (form, setErrors) => {
     const error = {}
@@ -17,10 +18,6 @@ export const validate = (form, setErrors) => {
 
     if(form.message.trim() === '') {
         error.message = 'Please enter a message'
-    }
-
-    if(form.address.trim() === '') {
-        error.message = 'Please enter a shipping address'
     }
 
     setErrors(error)

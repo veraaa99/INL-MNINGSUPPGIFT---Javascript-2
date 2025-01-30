@@ -1,9 +1,8 @@
-
 function FormInput({ className, errorMsg, label, name, id, ...rest }) {
   return (
     <div className={`form-group ${className} grid py-3`}>
         <label className='py-2' htmlFor={id}>{ label }</label>
-        <input className="form-input border rounded-sm border-gray-500 p-1" id={id} name={name} {...rest}/>
+        <input className="w-200 form-input border rounded-sm border-gray-500 p-1" id={id} name={name} {...rest}/>
         {errorMsg && <p className="invalid-input my-3">{errorMsg}</p>}
     </div>
   )

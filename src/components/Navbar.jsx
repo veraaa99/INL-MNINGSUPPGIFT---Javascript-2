@@ -17,13 +17,14 @@ function Navbar() {
   return (
     <nav className='border-1 border-white border-b-slate-300 bg-slate-100 p-8 '>
         <div className='container flex m-auto items-center justify-between'>
+          
           <div>
             <Link to="/" className='inline' onClick={() => setIsMessageSubmitted(false)}>
               <img className='flex inline m-0' src={logo}></img>
             </Link>
           </div>
 
-          <div className='flex '>
+          <div className='flex'>
             <ul className='flex gap-4 mx-6'>
                 <li className=''><NavLink to="/" onClick={() => setIsMessageSubmitted(false)}>HOME</NavLink></li>
                 <li className=''><NavLink to="/Products" onClick={() => setIsMessageSubmitted(false)}>PRODUCTS</NavLink></li>
@@ -31,8 +32,8 @@ function Navbar() {
             </ul>
             <ul className='flex gap-3'>
               <li className='self-center'><FaSearch /></li>
-              <li><NavLink to="/Login" onClick={() => setIsMessageSubmitted(false)}>Login</NavLink></li>
               <button className='cursor-pointer' onClick={() => setCartIsOpen(state => !state)}><FaCartShopping /></button>
+              
               <div className='relative'>
                 { totalQuantity != 0 
                   ? 
@@ -50,23 +51,20 @@ function Navbar() {
 
               <div className='relative'>
                 { cartIsOpen &&
-                
-                <div className='modal bg-white rounded-md' onClick={e => e.stopPropagation()}> 
-                { shoppingItems.length > 0 
-                ? 
-                <>
-                    <ShoppingCartList />
-                    <button className='cursor-pointer hover:bg-indigo-400 hover:text-white m-3 p-3 border-3 border-solid border-slate-400 rounded-md text-lg'><NavLink to="/Checkout" onClick={() => setCartIsOpen(state => !state)}>Checkout</NavLink></button>
-                </>
-                : 'Your cart is empty'}
-              </div>
-            }
-
+                  <div className='modal bg-white rounded-md' onClick={e => e.stopPropagation()}> 
+                  { shoppingItems.length > 0 
+                  ? 
+                  <>
+                      <ShoppingCartList />
+                      <button className='cursor-pointer hover:bg-indigo-400 hover:text-white m-3 p-3 border-3 border-solid border-slate-400 rounded-md text-lg'><NavLink to="/Checkout" onClick={() => setCartIsOpen(state => !state)}>Checkout</NavLink></button>
+                  </>
+                  : 'Your cart is empty'}
+                  </div>
+                }
               </div>
               
             </ul>
-
-            </div>
+          </div>
             
         </div>
     </nav>

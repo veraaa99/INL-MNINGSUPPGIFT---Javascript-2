@@ -13,9 +13,9 @@ function Products() {
   }, [])
 
   return (
-    <>
     <div className='m-8'>
       <h1 className='text-5xl justify-self-center p-10'>Products</h1>
+
         <ul className='grid md:m-8 md:gap-20 md:grid-cols-3 gap-6 m-8 px-8 sm:grid-cols-2'>
           {
             products.map((product) => (
@@ -25,6 +25,7 @@ function Products() {
                     <img className='object-cover rounded-lg' src={product.images[0]} ></img>
                   </Link>
                 </div>
+
                 <div className='flex flex-row justify-between mt-3 flex-wrap'>
                   <div className="mr-4">
                     <li><Link className='md:text-lg sm:text-base' to={`/Products/${product._id}`}>{product.name}</Link></li>
@@ -34,13 +35,13 @@ function Products() {
                   <SetQuantityButton product={product} />
                   </div>
                 </div>
+                
               </div>
             ))
           }
         </ul>
-      </div>
-    </>
-  )
 
+    </div>
+  )
 }
 export default Products

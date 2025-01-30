@@ -30,8 +30,7 @@ function ShoppingCartContextProvider( { children }) {
 
         if(item != undefined) {
             checkProduct(id, quantity)
-        }       
-
+        }      
     } 
 
     const checkProduct = (id, quantity) => {
@@ -71,7 +70,6 @@ function ShoppingCartContextProvider( { children }) {
 
     const removeShoppingListItem = (id) => {
         const newShoppingItems = shoppingItems.filter((product) => product.product.product._id !== id);
-     
         setShoppingItems(newShoppingItems);
     }
 
