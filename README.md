@@ -15,7 +15,7 @@ To launch the website, first make sure that you have NodeJs installed.
 
 Clone the repository: `https://github.com/veraaa99/INL-MNINGSUPPGIFT---Javascript-2.git` or download it as a zip-file and unpack it.<br/>
 
-Open up the project in eg. your development environment and open up a new terminal.<br/>First run the `npm install` command, followed by `npm run dev`.<br/>Finally, launch the presented `localhost`-link in your desired browser.
+Open up the project in eg. your code ditor and open up a new terminal.<br/>First run the `npm install` command, followed by `npm install tailwindcss @tailwindcss/vite` and `npm install react-icons --save`.<br/>Finally, run the `npm run dev` command and launch the presented `localhost`-link in your desired browser.<br/>(If the Tailwind styling does not apply, try re-launcing the site or restart your editor and try again).
 
 ## Usage & features
 Use the nav bar on top to navigate between the site’s different pages.
