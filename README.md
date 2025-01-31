@@ -15,7 +15,7 @@ To launch the website, first make sure that you have NodeJs installed.
 
 Clone the repository: `https://github.com/veraaa99/INL-MNINGSUPPGIFT---Javascript-2.git` or download it as a zip-file and unpack it.<br/>
 
-Open up the project in eg. your development environment and open up a new terminal.<br/>Run the `npm run dev` command, and finally launch the `localhost`-link in your desired browser.
+Open up the project in eg. your development environment and open up a new terminal.<br/>First run the `npm install` command, followed by `npm run dev`.<br/>Finally, launch the presented `localhost`-link in your desired browser.
 
 ## Usage & features
 Use the nav bar on top to navigate between the site’s different pages.
