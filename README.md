@@ -20,12 +20,11 @@ Open up the project in eg. your development environment and open up a new termin
 ## Usage & features
 Use the nav bar on top to navigate between the site’s different pages.
 
-At the Home and Products-pages, you’re able to browse and view a handful of products, including images and their price. To add an item to your shopping cart, set the amount with the item’s corresponding - and + buttons, and press the **Add to cart**-button.
-To view all the images and the description of a product, click on its name or image and you will be taken to a product details-page. You can press each image in order to display it in a bigger size, and also add the item to your shopping cart from this page too.
+At the Home and Products-pages, you’re able to browse and view a handful of products, including images and their price. To add an item to your shopping cart, set the amount with the item’s corresponding - and + buttons, and press the **Add to cart**-button.<br/>To view all the images and the description of a product, click on its name or image and you will be taken to a product details-page. You can press each image in order to display it in a bigger size, and also add the item to your shopping cart from this page too.
 
 Press the shopping cart to view your shopping list. Here, you can add or remove items using the + and - buttons, or clean your cart by pressing the  **Delete all items**-button. If the shopping cart is empty, a message will inform the user about this. 
 
-To place an order, press the  **Checkout**-button in the shopping cart. You will be taken to a page where you can review your order, and add or remove any amount of your products if you desire. To place an order, fill in the form at the bottom (Name, email and message), and press the **Submit**-button. You will then be informed that your cart is empty, and that your order has been successfully placed.
+In order to navigate to the checkout page, press the  **Checkout**-button in the shopping cart. You will be taken to a page where you can review your order, and add or remove any amount of your products if you desire.<br/>To place an order, fill in the form at the bottom (Name, email and message), and press the **Submit**-button. You will then be informed that your cart is empty, and that your order has been successfully placed.
 
 To send a message, go to the Contacts-page via the nav bar. Fill in your name, email and your message in the displayed form, press the **Submit**-button, and you will be greeted with a message confirming that your message has been successfully submitted. 
 
