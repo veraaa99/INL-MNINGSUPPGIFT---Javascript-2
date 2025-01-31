@@ -2,56 +2,54 @@ import { createContext, useContext, useState } from "react";
 
 export const OrderContext = createContext()
 
+// Order context
 function OrderContextProvider({ children }) {
 
+    // States to check and update if an order has been placed
     const [order, setOrder] = useState({})
     const [orders, setOrders] = useState([{}])
 
-    const placeOrder = (values) => { 
+   // Create a new order (an array with all product's IDs and quantity values)
+    const createOrder = (values) => { 
 
-        const newData = values.map((item)=>{
-            return {
-                productId: item.product.product._id,
-                quantity: item.quantity
-            }
-        })
-
-        setOrders(newData)
-
-        // https://stackoverflow.com/questions/76192706/how-do-i-create-a-different-array-from-an-existing-array-in-react
         const newOrder = values.map((item) => {
             return {productId: item.product.product._id, quantity: item.quantity}
-          })
+        })
 
-        sendOrder(newOrder)
+        // Set the orders state to the newOrder-array
+        // Place a new order with the newOrder-array
+        setOrders(newOrder)
+        placeOrder(newOrder)
     }
 
-    const sendOrder = async (newOrder) => {
+    // Place an order by posting it to the API
+    const placeOrder = async (newOrder) => {
 
         const order = {
             products: newOrder
         }
 
-        const res = await fetch('https://js2-ecommerce-api.vercel.app/api/orders', {
+        await fetch('https://js2-ecommerce-api.vercel.app/api/orders', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(order)
-            }).catch((err) => console.log('error'))
+        }).catch((error) => console.log(error.message))
 
-        const data = await res.json()
         return true
     }
 
+    // Values to be passed from the Order Context
     const value = {
         orders,
         setOrders,
         order,
         setOrder,
-        placeOrder
+        createOrder
     }
 
+    // Order context provider to share values with children (=components using the Order context)
     return (
         <OrderContext.Provider value={value}>
             { children }
@@ -61,6 +59,8 @@ function OrderContextProvider({ children }) {
 
 export default OrderContextProvider
 
+// Custom hook with useContext-hook, to let children access the context
+// If the hook isn't called inside the Order Context Provider, throw error
 export const useOrderContext = () => {
     const context = useContext(OrderContext)
 

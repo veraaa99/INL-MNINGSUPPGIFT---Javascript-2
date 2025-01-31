@@ -2,10 +2,13 @@ import { createContext, useContext, useState } from "react";
 
 export const MessageContext = createContext()
 
+// Message context
 function MessageContextProvider({ children }) {
 
-const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
+    // State to check and update if a form message has been sent
+    const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
 
+    // Post a message to the API (with name, email and message values)
     const sendMessage = async (values) => {
         const newMessage = {
             name: values.name,
@@ -22,6 +25,7 @@ const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
                 body: JSON.stringify(newMessage)
             })
 
+            // If response from API is 200, set the isMessageSubmitted state to true
             if (checkResponse(response.status)) {
                 setIsMessageSubmitted(true)
             }
@@ -33,16 +37,19 @@ const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
         }
     }
 
+    // Check if response from API is 200 
     const checkResponse = (response) => {
         return response == 200;
     }
 
+    // Values to be passed from the Message Context
     const value = {
         sendMessage,
         isMessageSubmitted,
         setIsMessageSubmitted
     }
 
+    // Message context provider to share values with children (=components using the Message context)
     return (
         <MessageContext.Provider value={value}>
             { children }
@@ -52,6 +59,8 @@ const [isMessageSubmitted, setIsMessageSubmitted] = useState(false)
 
 export default MessageContextProvider
 
+// Custom hook with useContext-hook, to let children access the context
+// If the hook isn't called inside the Message Context Provider, throw error
 export const useMessageContext = () => {
     const context = useContext(MessageContext)
 

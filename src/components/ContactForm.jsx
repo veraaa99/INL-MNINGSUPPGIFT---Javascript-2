@@ -2,23 +2,28 @@ import { useMessageContext } from "../contexts/MessageContext"
 import useForm from "../hooks/useForm"
 import FormInput from "./FormInput"
 
+// Contact form component
 function ContactForm() {
 
+    // Import useForm-hook to handle and submit form
     const { form, errors, handleChange, handleSubmit } = useForm({
         name: '',
         email: '',
         message: ''
     })
 
+    // Import states from Message Context to handle form
     const { isMessageSubmitted } = useMessageContext()
     const { sendMessage } = useMessageContext()
 
+    // When form is submitted, send values to the API through the sendMessage()-function
     const onSubmit = (e) => {
         handleSubmit(e, async (values) => {
             sendMessage(values)
         })
     }
 
+    // Contact Form
   return (
     <div className='m-auto' >
         <h2 className='text-4xl my-6'>Contact us:</h2>

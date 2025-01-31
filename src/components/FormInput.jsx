@@ -1,4 +1,6 @@
+// Forminput component
 function FormInput({ className, errorMsg, label, name, id, ...rest }) {
+  // Label, input field and error message 
   return (
     <div className={`form-group ${className} grid py-3`}>
         <label className='py-2' htmlFor={id}>{ label }</label>

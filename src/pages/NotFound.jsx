@@ -1,3 +1,4 @@
+// Not found (404) page
 function NotFound() {
   return (
     <div>

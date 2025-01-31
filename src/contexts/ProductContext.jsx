@@ -2,13 +2,18 @@ import { createContext, useContext, useState } from "react";
 
 export const ProductContext = createContext()
 
+// Product context 
 function ProductContextProvider({ children }) {
 
+  // States to set and update the total amount of products, their images,
+  // one specific product and its ID
   const [products, setProducts] = useState([])
-  const [product, setProduct] = useState({})
   const [imgSrc, setImgSrc] = useState([])
+  const [product, setProduct] = useState({})
   let [productId, setProductId] = useState('')
 
+  // Get all products by fetching them from the API
+  // Set all products to the products state 
   const getProducts = async () => {
     try {
       const res = await fetch('https://js2-ecommerce-api.vercel.app/api/products')
@@ -16,9 +21,10 @@ function ProductContextProvider({ children }) {
       setProducts(data)
       return true
     }
-    catch(err) {console.log('error')}
+    catch(error) {console.log(error.message)}
   }
 
+  // Values to be passed from the Product Context
   const value = {
     products,
     setProducts,
@@ -31,15 +37,18 @@ function ProductContextProvider({ children }) {
     setProductId
   }
 
-    return (
-        <ProductContext.Provider value={value}>
-            { children }
-        </ProductContext.Provider>
-    )
+  // Product context provider to share values with children (=components using the Product context)
+  return (
+      <ProductContext.Provider value={value}>
+          { children }
+      </ProductContext.Provider>
+  )
 }
 
 export default ProductContextProvider
 
+// Custom hook with useContext-hook, to let children access the context
+// If the hook isn't called inside the Product Context Provider, throw error
 export const useProductContext = () => {
     const context = useContext(ProductContext)
 

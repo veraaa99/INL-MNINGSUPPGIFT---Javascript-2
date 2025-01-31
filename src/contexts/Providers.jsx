@@ -3,6 +3,7 @@ import OrderContextProvider from "./OrderContext"
 import ProductContextProvider from "./ProductContext"
 import ShoppingCartContextProvider from "./ShoppingCartContext"
 
+// All context providers
 const Providers = ({ children }) => {
     return (
         <OrderContextProvider>
